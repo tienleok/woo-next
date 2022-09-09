@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      # run npm install using versions in package-lock.json
+      - npm ci
+  build:
+    commands:
+      # run the test suite
+      - npm test
+
+      # run the build
+      - npm run build
+artifacts:
+  files:
+    # bundle everything as a build artifact, except hidden files
+    - '**/*'
